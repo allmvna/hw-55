@@ -4,13 +4,13 @@ export interface Ingredient {
     image: string;
 }
 
-export interface Props {
-    name: string;
-    count: number;
+export interface MenuProps {
+    ingredients: Ingredient[];
+    onAddIngredient: (name: string) => void;
 }
+
 export interface IngredientButtonProps {
-    name: string;
-    image: string;
-    onClick: () => void;
-    AddIngredient: () => void;
+    ingredient: Ingredient;
+    onClick: (name: string) => void;
 }
+
