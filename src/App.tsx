@@ -29,16 +29,17 @@ const App: React.FC = () => {
         { name: 'Bacon', count: 0 },
     ]);
 
-
     const addIngredient = (name: string) => {
         setIngredients((prevState) =>
-            prevState.map((ingredient) =>
-                ingredient.name === name
-                    ? { ...ingredient, count: ingredient.count + 1 }
-                    : ingredient
-            )
+            prevState.reduce((acc, ingredient) => {
+                if (ingredient.name === name) {
+                    acc.push({ ...ingredient, count: ingredient.count + 1 });
+                } else {
+                    acc.push(ingredient);
+                }
+                return acc;
+            }, [] as IngredientState[])
         );
-        console.log(`${name} added to burger`);
     };
 
     return (
