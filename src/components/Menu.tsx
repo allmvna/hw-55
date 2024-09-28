@@ -1,20 +1,30 @@
 import React from 'react';
 import {MenuProps} from '../types';
-import IngredientButton from './IngredientButton';
+import AddButton from './AddButton';
+import {IngredientState} from '../App';
 
-const Menu: React.FC<MenuProps> = ({ingredients, onAddIngredient }) => {
+interface ExtendedMenuProps extends MenuProps {
+    ingredientCounts: IngredientState[];
+}
+
+const Menu: React.FC<ExtendedMenuProps> = ({ingredients, onAddIngredient, ingredientCounts }) => {
+
+    const getIngredientCount = (name: string): number => {
+        const ingredient = ingredientCounts.find((countIngredient) => countIngredient.name === name);
+        return ingredient ? ingredient.count : 0;
+    };
+
     return (
-        <div>
-            <div className="Menu">
-                <h1>Меню:</h1>
-                {ingredients.map((ingredient) => (
-                    <IngredientButton
-                        key={ingredient.name}
-                        ingredient={ingredient}
-                        onClick={onAddIngredient}
-                    />
-                ))}
-            </div>
+        <div className="Menu">
+            <h1>Ингредиенты:</h1>
+            {ingredients.map((ingredient) => (
+                <AddButton
+                    key={ingredient.name}
+                    ingredient={ingredient}
+                    count={getIngredientCount(ingredient.name)}
+                    onClick={onAddIngredient}
+                />
+            ))}
         </div>
     );
 };

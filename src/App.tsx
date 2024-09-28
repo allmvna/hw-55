@@ -1,15 +1,15 @@
 import './App.css';
 import * as React from 'react';
-import { Ingredient } from './types';
+import {useState} from 'react';
+import {Ingredient} from './types';
 import meatImage from './assets/meat.png';
 import cheeseImage from './assets/cheese.png';
 import saladImage from './assets/salad.png';
 import baconImage from './assets/bacon.png';
-import { useState } from 'react';
 import Menu from './components/Menu';
 import Burger from './components/Burger';
 
-interface IngredientState {
+export interface IngredientState {
     name: string;
     count: number;
 }
@@ -29,6 +29,7 @@ const App: React.FC = () => {
         { name: 'Bacon', count: 0 },
     ]);
 
+
     const addIngredient = (name: string) => {
         setIngredients((prevState) =>
             prevState.reduce((acc, ingredient) => {
@@ -44,10 +45,10 @@ const App: React.FC = () => {
 
     return (
         <>
-        <div className = 'App'>
-            <Menu ingredients={INGREDIENTS} onAddIngredient={addIngredient} />
-            <Burger ingredients={ingredients} />
-        </div>
+            <div className='App'>
+                <Menu ingredients={INGREDIENTS} onAddIngredient={addIngredient} ingredientCounts={ingredients}/>
+                <Burger ingredients={ingredients}/>
+            </div>
         </>
     );
 };
