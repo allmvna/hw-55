@@ -1,6 +1,6 @@
 import React from 'react';
 import {MenuProps} from '../types';
-import AddButton from './AddButton'
+import AddButton from './AddButton';
 import {IngredientState} from '../App';
 
 
@@ -24,6 +24,7 @@ const Menu: React.FC<ExtendedMenuProps> = ({ingredients, onAddIngredient, ingred
                     key={ingredient.name}
                     ingredient={ingredient}
                     count={getIngredientCount(ingredient.name)}
+                    price={ingredient.price}
                     onClick={onAddIngredient}
                     onRemove={onRemoveIngredient}
                 />

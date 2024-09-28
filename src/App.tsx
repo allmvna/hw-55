@@ -8,6 +8,7 @@ import saladImage from './assets/salad.png';
 import baconImage from './assets/bacon.png';
 import Menu from './components/Menu';
 import Burger from './components/Burger';
+import PriceIngredient from './components/PriceIngredient';
 
 export interface IngredientState {
     name: string;
@@ -56,8 +57,6 @@ const App: React.FC = () => {
         );
     };
 
-
-
     return (
         <>
             <div className='App'>
@@ -67,6 +66,7 @@ const App: React.FC = () => {
                       onRemoveIngredient={removeIngredient}/>
                 <Burger ingredients={ingredients}/>
             </div>
+            <PriceIngredient ingredients={ingredients} />
         </>
     );
 };
