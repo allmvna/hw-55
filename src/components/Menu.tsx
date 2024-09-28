@@ -1,13 +1,15 @@
 import React from 'react';
 import {MenuProps} from '../types';
-import AddButton from './AddButton';
+import AddButton from './AddButton'
 import {IngredientState} from '../App';
+
 
 interface ExtendedMenuProps extends MenuProps {
     ingredientCounts: IngredientState[];
+    onRemoveIngredient: (name: string) => void;
 }
 
-const Menu: React.FC<ExtendedMenuProps> = ({ingredients, onAddIngredient, ingredientCounts }) => {
+const Menu: React.FC<ExtendedMenuProps> = ({ingredients, onAddIngredient, ingredientCounts, onRemoveIngredient }) => {
 
     const getIngredientCount = (name: string): number => {
         const ingredient = ingredientCounts.find((countIngredient) => countIngredient.name === name);
@@ -23,6 +25,7 @@ const Menu: React.FC<ExtendedMenuProps> = ({ingredients, onAddIngredient, ingred
                     ingredient={ingredient}
                     count={getIngredientCount(ingredient.name)}
                     onClick={onAddIngredient}
+                    onRemove={onRemoveIngredient}
                 />
             ))}
         </div>

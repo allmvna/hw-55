@@ -43,10 +43,28 @@ const App: React.FC = () => {
         );
     };
 
+    const removeIngredient = (name: string) => {
+        setIngredients((prevState) =>
+            prevState.reduce((acc, ingredient) => {
+                if (ingredient.name === name && ingredient.count > 0) {
+                    acc.push({ ...ingredient, count: ingredient.count - 1 });
+                } else {
+                    acc.push(ingredient);
+                }
+                return acc;
+            }, [] as IngredientState[])
+        );
+    };
+
+
+
     return (
         <>
             <div className='App'>
-                <Menu ingredients={INGREDIENTS} onAddIngredient={addIngredient} ingredientCounts={ingredients}/>
+                <Menu ingredients={INGREDIENTS}
+                      onAddIngredient={addIngredient}
+                      ingredientCounts={ingredients}
+                      onRemoveIngredient={removeIngredient}/>
                 <Burger ingredients={ingredients}/>
             </div>
         </>

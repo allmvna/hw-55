@@ -120,7 +120,7 @@ body {
 }
 
 .Burger {
-    width: 350px;
+    width: 500px;
     margin: auto;
     height: auto;
     overflow: auto;
@@ -136,6 +136,9 @@ body {
     .Burger {
         width: 550px;
         height: 500px;
+    }
+    .Menu {
+        width: 550px;
     }
 }
 
@@ -161,15 +164,15 @@ body {
     display: flex;
     align-items: center;
     width: 200px;
-    color: black;
+    color: white;
     border: none;
     border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    background: inherit;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.81);
 }
 
 .AddBtn:hover {
-    background-color: #666;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -177,4 +180,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.RemoveBtn{
+    border: none;
+    padding: 12px;
+    background: url("https://img.icons8.com/badges/32/trash.png") no-repeat center;
+}
+
+.RemoveBtn:hover {
+    background-color: white;
+}
+
+.ingredient-count{
+    border: 1px solid white;
+    padding: 8px;
+}
+
+.AddBtn img{
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
 }
